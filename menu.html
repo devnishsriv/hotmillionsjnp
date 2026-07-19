@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Delights Menu | Hot Millions Bakery Jaunpur</title>
+<meta name="description" content="Explore Hot Millions Bakery's full delights menu. Browse and order our fresh premium cakes, flaky pastries, hand-crafted chocolates, and hot cheesy savories directly.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght=300;400;500;600;700&family=DM+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: { 50:'#FFF5F5',100:'#FDE8E8',200:'#F8C4C4',300:'#F09A9A',400:'#E56060',500:'#A02040',600:'#8B1A36',700:'#6E142B',800:'#520E20',900:'#360815' },
+        gold: { 50:'#FDF8EF',100:'#F9EDDA',200:'#F0D5A8',300:'#E4B978',400:'#C9A96E',500:'#B8943F',600:'#9A7A30',700:'#7C6125',800:'#5E491C',900:'#403113' },
+        cream: { 50:'#FFFDF9',100:'#FFF8F0',200:'#FFF1E3',300:'#FFE8D2' }
+      },
+      fontFamily: { display:['Playfair Display','serif'], body:['Inter','sans-serif'], sans:['DM Sans','sans-serif'] }
+    }
+  }
+}
+</script>
+</head>
+<body class="grain">
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-particles" id="loaderParticles"></div>
+  <div class="logo-text" id="loaderLogo">Hot Millions</div>
+  <div class="logo-hindi" id="loaderHindi">हॉट मिलियन्स बेकरी</div>
+  <div class="progress-bar" id="loaderProgress">
+    <div class="progress-fill" id="loaderFill"></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-gold-400 flex items-center justify-center text-white font-display font-bold text-lg group-hover:scale-110 transition-transform">H</div>
+      <div>
+        <div class="font-display text-lg font-semibold tracking-tight text-brand-800 leading-none">Hot Millions</div>
+        <div class="text-[10px] text-gold-500 tracking-widest uppercase">Bakery</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Home</a>
+      <a href="index.html#about" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">About</a>
+      <a href="menu.html" class="nav-link text-sm font-bold text-brand-600 transition">Menu</a>
+      <a href="index.html#specialties" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Specialties</a>
+      <a href="index.html#contact" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="index.html#contact" class="magnetic-btn hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-brand-500/25 transition-all">
+        <span>Order Now</span>
+        <iconify-icon icon="mdi:arrow-right" width="16"></iconify-icon>
+      </a>
+      <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center" aria-label="Menu">
+        <iconify-icon icon="mdi:menu" width="20" class="text-brand-600"></iconify-icon>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden glass mx-4 mb-4 rounded-2xl overflow-hidden max-h-0 transition-all duration-500">
+    <div class="p-6 space-y-4">
+      <a href="index.html" class="block text-brand-800 font-medium py-2 mobile-link">Home</a>
+      <a href="index.html#about" class="block text-brand-800 font-medium py-2 mobile-link">About</a>
+      <a href="menu.html" class="block text-brand-800 font-bold py-2 mobile-link">Menu</a>
+      <a href="index.html#specialties" class="block text-brand-800 font-medium py-2 mobile-link">Specialties</a>
+      <a href="index.html#contact" class="block text-brand-800 font-medium py-2 mobile-link">Contact</a>
+      <a href="index.html#contact" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-6 py-3 rounded-full text-sm font-semibold mt-2 mobile-link">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER BANNER -->
+<section class="relative bg-brand-800 text-white pt-36 pb-20 overflow-hidden grain">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(160,32,64,0.15),transparent_60%)]"></div>
+  <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Freshly Baked Daily</span>
+    <h1 class="font-display text-4xl md:text-6xl font-bold tracking-tight mb-4">Our Full Delights Menu</h1>
+    <p class="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+      Explore Jaunpur's finest selection of premium artisan cakes, flaky pastries, gourmet hand-crafted chocolates, and delicious cheesy savories.
+    </p>
+  </div>
+</section>
+
+<!-- DYNAMIC TABBED CATALOG SECTION -->
+<section id="menuSection" class="py-20 bg-cream-50/50 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Catalog Filter & Search Bar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+      <div class="flex flex-wrap gap-2.5">
+        <button data-category="All" onclick="setFilter('All')" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-500 text-white shadow-md transition-all">All Delights</button>
+        <button data-category="Cakes" onclick="setFilter('Cakes')" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-brand-800/70 border border-brand-100 hover:bg-brand-50 transition-all">Cakes</button>
+        <button data-category="Pastries" onclick="setFilter('Pastries')" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-brand-800/70 border border-brand-100 hover:bg-brand-50 transition-all">Pastries</button>
+        <button data-category="Chocolates" onclick="setFilter('Chocolates')" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-brand-800/70 border border-brand-100 hover:bg-brand-50 transition-all">Chocolates</button>
+        <button data-category="Savory" onclick="setFilter('Savory')" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white text-brand-800/70 border border-brand-100 hover:bg-brand-50 transition-all">Savories & Dairy</button>
+      </div>
+      
+      <!-- Live Catalog Search -->
+      <div class="relative w-full md:w-80">
+        <input type="text" id="catalogSearch" placeholder="Search our fresh menu..." class="w-full px-5 py-3 pl-12 rounded-2xl bg-white border border-brand-100 text-brand-800 text-sm font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition-all shadow-sm">
+        <iconify-icon icon="mdi:magnify" width="18" class="absolute left-4 top-1/2 -translate-y-1/2 text-brand-400"></iconify-icon>
+      </div>
+    </div>
+    
+    <!-- Catalog Grid -->
+    <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Rendered dynamically by main.js -->
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-20 bg-brand-900 text-white relative overflow-hidden grain">
+  <div class="absolute inset-0 bg-gradient-to-tr from-brand-950/80 via-transparent to-brand-800/80"></div>
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-8">
+    <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400">Order & Celebrations</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+      Have a Dream Cake <br>In Mind?
+    </h2>
+    <p class="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+      Whether it is a custom themed birthday, a glamorous multi-tier wedding showstopper, or some specialty pastries, let us bake it for you!
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index.html#contact" class="magnetic-btn inline-flex items-center gap-3 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-8 py-4 rounded-full font-bold shadow-lg shadow-gold-500/10 hover:shadow-gold-500/30 transition-all">
+        <span>Order Online</span>
+        <iconify-icon icon="mdi:chevron-right" width="20"></iconify-icon>
+      </a>
+      <a href="https://wa.me/919140893400" target="_blank" class="magnetic-btn inline-flex items-center gap-3 bg-white/5 border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold transition-all">
+        <iconify-icon icon="mdi:whatsapp" width="20" class="text-green-400"></iconify-icon>
+        <span>Discuss on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-900 text-white relative overflow-hidden border-t border-brand-800">
+  <div class="max-w-7xl mx-auto px-6 pt-20 pb-8">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-gold-400 flex items-center justify-center text-white font-display font-bold text-xl">H</div>
+          <div>
+            <div class="font-display text-xl font-bold">Hot Millions</div>
+            <div class="text-gold-400 text-xs tracking-wider">हॉट मिलियन्स बेकरी</div>
+          </div>
+        </div>
+        <p class="text-white/40 leading-relaxed max-w-sm mb-6">Jaunpur's most loved bakery — crafting unforgettable cakes, pastries & chocolates with love, hygiene, and premium ingredients.</p>
+        <div class="flex gap-3">
+          <a href="https://instagram.com/hotmillionsjaunpur" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:border-brand-500 transition">
+            <iconify-icon icon="mdi:instagram" width="18" class="text-white"></iconify-icon>
+          </a>
+          <a href="https://www.zomato.com/jaunpur/hot-million-bakery-jaunpur-locality" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:border-brand-500 transition">
+            <iconify-icon icon="mdi:food" width="18" class="text-white"></iconify-icon>
+          </a>
+          <a href="https://wa.me/919140893400" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-green-600 hover:border-green-600 transition">
+            <iconify-icon icon="mdi:whatsapp" width="18" class="text-white"></iconify-icon>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gold-400">Pages</h4>
+        <ul class="space-y-3">
+          <li><a href="index.html#hero" class="text-white/40 hover:text-white transition text-sm">Home</a></li>
+          <li><a href="index.html#about" class="text-white/40 hover:text-white transition text-sm">About Us</a></li>
+          <li><a href="menu.html" class="text-white/40 hover:text-white transition text-sm">Our Menu</a></li>
+          <li><a href="index.html#specialties" class="text-white/40 hover:text-white transition text-sm">Specialties</a></li>
+          <li><a href="index.html#contact" class="text-white/40 hover:text-white transition text-sm">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gold-400">Newsletter</h4>
+        <p class="text-white/40 text-sm mb-4">Get updates on new flavors, seasonal specials & exclusive offers.</p>
+        <form id="newsletterForm" class="flex gap-2">
+          <input type="email" required placeholder="Your email" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-gold-400/50 transition">
+          <button type="submit" class="bg-gradient-to-r from-brand-500 to-gold-400 text-white px-4 py-2.5 rounded-xl font-semibold text-sm hover:shadow-lg transition">
+            <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/20 text-xs">© 2024 Hot Millions Bakery. All rights reserved. Made with ❤️ in Jaunpur.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-white/20 hover:text-white/40 text-xs transition">Privacy</a>
+        <a href="#" class="text-white/20 hover:text-white/40 text-xs transition">Terms</a>
+        <a href="https://www.zomato.com/jaunpur/hot-million-bakery-jaunpur-locality" target="_blank" class="text-white/20 hover:text-white/40 text-xs transition">Zomato</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/919140893400?text=Hi!%20I'd%20like%20to%20place%20an%20order%20from%20Hot%20Millions%20Bakery" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <iconify-icon icon="mdi:whatsapp" width="30" class="text-white"></iconify-icon>
+</a>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Millions Bakery | Jaunpur's Finest Premium Cakes & Pastries</title>
+<meta name="description" content="Hot Millions Bakery — Premium cakes, pastries, chocolates and bakery items in Jaunpur. 4.5★ rated with 843+ reviews. Order now!">
+<meta name="keywords" content="bakery, cake shop, jaunpur, hot millions, birthday cake, wedding cake, pastry, chocolate">
+<link rel="canonical" href="https://hotmillionsjaunpur.com">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght=300;400;500;600;700&family=DM+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: { 50:'#FFF5F5',100:'#FDE8E8',200:'#F8C4C4',300:'#F09A9A',400:'#E56060',500:'#A02040',600:'#8B1A36',700:'#6E142B',800:'#520E20',900:'#360815' },
+        gold: { 50:'#FDF8EF',100:'#F9EDDA',200:'#F0D5A8',300:'#E4B978',400:'#C9A96E',500:'#B8943F',600:'#9A7A30',700:'#7C6125',800:'#5E491C',900:'#403113' },
+        cream: { 50:'#FFFDF9',100:'#FFF8F0',200:'#FFF1E3',300:'#FFE8D2' }
+      },
+      fontFamily: { display:['Playfair Display','serif'], body:['Inter','sans-serif'], sans:['DM Sans','sans-serif'] }
+    }
+  }
+}
+</script>
+</head>
+<body class="grain">
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-particles" id="loaderParticles"></div>
+  <div class="logo-text" id="loaderLogo">Hot Millions</div>
+  <div class="logo-hindi" id="loaderHindi">हॉट मिलियन्स बेकरी</div>
+  <div class="progress-bar" id="loaderProgress">
+    <div class="progress-fill" id="loaderFill"></div>
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" id="searchModal">
+  <div class="w-full max-w-2xl px-6">
+    <div class="flex items-center gap-4 border-b-2 border-gold-400/30 pb-4">
+      <iconify-icon icon="mdi:magnify" width="28" class="text-gold-400"></iconify-icon>
+      <input type="text" id="searchInput" placeholder="Search cakes, pastries, menu items..." class="bg-transparent text-white text-2xl font-light w-full outline-none placeholder:text-white/30 font-display">
+      <button onclick="toggleSearch()" class="text-white/50 hover:text-white transition">
+        <iconify-icon icon="mdi:close" width="28"></iconify-icon>
+      </button>
+    </div>
+    <div id="searchResults" class="mt-6 space-y-3 max-h-[50vh] overflow-y-auto"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- NAVIGATION -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-gold-400 flex items-center justify-center text-white font-display font-bold text-lg group-hover:scale-110 transition-transform">H</div>
+      <div>
+        <div class="font-display text-lg font-semibold tracking-tight text-brand-800 leading-none">Hot Millions</div>
+        <div class="text-[10px] text-gold-500 tracking-widest uppercase">Bakery</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#hero" class="nav-link text-sm font-bold text-brand-600 transition">Home</a>
+      <a href="#about" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">About</a>
+      <a href="#menu" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Menu</a>
+      <a href="#specialties" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Specialties</a>
+      <a href="#contact" class="nav-link text-sm font-medium text-brand-800/70 hover:text-brand-600 transition">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="toggleSearch()" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-50 transition" aria-label="Search">
+        <iconify-icon icon="mdi:magnify" width="18" class="text-brand-600"></iconify-icon>
+      </button>
+      <a href="#contact" class="magnetic-btn hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-brand-500/25 transition-all">
+        <span>Order Now</span>
+        <iconify-icon icon="mdi:arrow-right" width="16"></iconify-icon>
+      </a>
+      <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center" aria-label="Menu">
+        <iconify-icon icon="mdi:menu" width="20" class="text-brand-600"></iconify-icon>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden glass mx-4 mb-4 rounded-2xl overflow-hidden max-h-0 transition-all duration-500">
+    <div class="p-6 space-y-4">
+      <a href="#hero" class="block text-brand-800 font-bold py-2 mobile-link">Home</a>
+      <a href="#about" class="block text-brand-800 font-medium py-2 mobile-link">About</a>
+      <a href="#menu" class="block text-brand-800 font-medium py-2 mobile-link">Menu</a>
+      <a href="#specialties" class="block text-brand-800 font-medium py-2 mobile-link">Specialties</a>
+      <a href="#contact" class="block text-brand-800 font-medium py-2 mobile-link">Contact</a>
+      <a href="#contact" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-6 py-3 rounded-full text-sm font-semibold mt-2 mobile-link">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-cream-50 via-white to-brand-50/30"></div>
+    <div class="absolute top-20 right-20 w-[500px] h-[500px] rounded-full bg-brand-500/5 blur-[100px]"></div>
+    <div class="absolute bottom-20 left-20 w-[400px] h-[400px] rounded-full bg-gold-400/10 blur-[80px]"></div>
+    <div id="heroParticles" class="absolute inset-0"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="space-y-8">
+      <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full shimmer">
+        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+        <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Open Now — Closes 10 PM</span>
+      </div>
+      
+      <h1 class="reveal-text">
+        <span class="word"><span class="char font-display text-5xl md:text-7xl lg:text-8xl font-bold text-brand-800 leading-[0.95] tracking-tight">Every</span></span>
+        <span class="word"><span class="char font-display text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-brand-500 to-gold-400 bg-clip-text text-transparent leading-[0.95] tracking-tight">Bite</span></span>
+        <br>
+        <span class="word"><span class="char font-display text-5xl md:text-7xl lg:text-8xl font-bold text-brand-800 leading-[0.95] tracking-tight">Tells a</span></span>
+        <span class="word"><span class="char font-display text-5xl md:text-7xl lg:text-8xl font-bold italic text-gold-500 leading-[0.95] tracking-tight">Story</span></span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-brand-700/60 max-w-lg leading-relaxed hero-fade" style="opacity:0;transform:translateY(20px)">
+        Jaunpur's most loved bakery — crafting unforgettable cakes, pastries & chocolates since day one. Rated 4.5★ by 843+ happy customers.
+      </p>
+
+      <div class="flex flex-wrap gap-4 hero-fade" style="opacity:0;transform:translateY(20px)">
+        <a href="#specialties" class="magnetic-btn group inline-flex items-center gap-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-8 py-4 rounded-full font-semibold text-base hover:shadow-2xl hover:shadow-brand-500/30 transition-all">
+          <span>Order Your Cake</span>
+          <iconify-icon icon="mdi:arrow-right" width="20" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+        </a>
+        <a href="menu.html" class="magnetic-btn inline-flex items-center gap-3 glass px-8 py-4 rounded-full font-semibold text-brand-600 hover:bg-brand-50 transition-all">
+          <iconify-icon icon="mdi:cake-variant-outline" width="20"></iconify-icon>
+          <span>View Menu</span>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-6 pt-4 hero-fade" style="opacity:0;transform:translateY(20px)">
+        <div class="flex -space-x-3">
+          <img src="https://picsum.photos/seed/customer1/48/48.jpg" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Customer">
+          <img src="https://picsum.photos/seed/customer2/48/48.jpg" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Customer">
+          <img src="https://picsum.photos/seed/customer3/48/48.jpg" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Customer">
+          <div class="w-10 h-10 rounded-full border-2 border-white bg-brand-500 flex items-center justify-center text-white text-xs font-bold">843+</div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1 text-gold-400">
+            <iconify-icon icon="mdi:star" width="16"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="16"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="16"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="16"></iconify-icon>
+            <iconify-icon icon="mdi:star-half-full" width="16"></iconify-icon>
+          </div>
+          <p class="text-xs text-brand-600/50 mt-0.5">843 verified reviews</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative hero-visual" style="opacity:0;transform:scale(0.9)">
+      <div class="relative w-full aspect-square max-w-lg mx-auto">
+        <div class="absolute inset-0 border-2 border-dashed border-gold-300/30 rounded-full animate-spin" style="animation-duration:30s"></div>
+        <div class="absolute inset-8 border border-brand-200/20 rounded-full animate-spin" style="animation-duration:20s;animation-direction:reverse"></div>
+        
+        <div class="absolute inset-16 rounded-full overflow-hidden shadow-2xl shadow-brand-500/20 glow-brand">
+          <img src="https://picsum.photos/seed/bakery-hero-cake/600/600.jpg" class="w-full h-full object-cover distort-img" alt="Premium Cake">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-900/20 to-transparent"></div>
+        </div>
+
+        <div class="absolute top-8 right-8 glass rounded-2xl p-3 shadow-lg floating-element" style="animation:float 4s ease-in-out infinite">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
+              <iconify-icon icon="mdi:cake-variant" width="16" class="text-white"></iconify-icon>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-brand-800">500+</div>
+              <div class="text-[10px] text-brand-600/50">Cakes/Month</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute bottom-12 left-4 glass rounded-2xl p-3 shadow-lg floating-element" style="animation:float 5s ease-in-out infinite 1s">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-gold-400 rounded-lg flex items-center justify-center">
+              <iconify-icon icon="mdi:truck-delivery" width="16" class="text-white"></iconify-icon>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-brand-800">Delivery</div>
+              <div class="text-[10px] text-brand-600/50">Drive-through</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute bottom-4 right-16 glass rounded-2xl p-3 shadow-lg floating-element" style="animation:float 6s ease-in-out infinite 2s">
+          <div class="flex items-center gap-1">
+            <iconify-icon icon="mdi:star" width="14" class="text-gold-400"></iconify-icon>
+            <span class="text-sm font-bold text-brand-800">4.5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator">
+    <span class="text-[10px] uppercase tracking-[0.3em] text-brand-600/30 font-medium">Scroll</span>
+    <div class="w-5 h-8 border-2 border-brand-300/30 rounded-full flex justify-center pt-1.5">
+      <div class="w-1 h-2 bg-brand-400 rounded-full animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="py-6 bg-brand-800 overflow-hidden">
+  <div class="marquee-track">
+    <span class="flex items-center gap-8 px-4 text-white/80 text-sm font-medium tracking-wider uppercase whitespace-nowrap">
+      <span>★ Premium Cakes</span><span>★ Fresh Pastries</span><span>★ Custom Designs</span><span>★ Wedding Cakes</span><span>★ Birthday Specials</span><span>★ Artisan Chocolates</span><span>★ Cheese & Savories</span><span>★ Home Delivery</span><span>★ Drive-Through</span><span>★ Jaunpur's Best</span>
+    </span>
+    <span class="flex items-center gap-8 px-4 text-white/80 text-sm font-medium tracking-wider uppercase whitespace-nowrap">
+      <span>★ Premium Cakes</span><span>★ Fresh Pastries</span><span>★ Custom Designs</span><span>★ Wedding Cakes</span><span>★ Birthday Specials</span><span>★ Artisan Chocolates</span><span>★ Cheese & Savories</span><span>★ Home Delivery</span><span>★ Drive-Through</span><span>★ Jaunpur's Best</span>
+    </span>
+  </div>
+</div>
+
+<!-- ABOUT US SECTION -->
+<section id="about" class="relative overflow-hidden">
+  
+  <!-- QUICK STATS / WELCOME SECTION -->
+  <div class="py-20 bg-cream-50/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Welcome to Jaunpur's Finest</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-800 leading-tight">
+            Baked Fresh <br><span class="italic text-brand-500">Every Single Day</span>
+          </h2>
+          <p class="text-brand-700/60 text-lg mt-6 leading-relaxed">
+            At Hot Millions Bakery, we bring sweetness to your celebrations. From custom single-tier and multi-tier birthday and wedding cakes to fresh savory treats, handmade gourmet chocolates, and artisan cheese, our quality and taste have made us a household name.
+          </p>
+          <div class="flex gap-4 mt-8">
+            <a href="#storySection" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-500 transition-all">
+              <span>Read Our Full Story</span>
+              <iconify-icon icon="mdi:arrow-right" width="16"></iconify-icon>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="p-6 bg-white rounded-3xl border border-brand-100 shadow-xl shadow-brand-500/5">
+            <div class="font-display text-4xl font-bold text-brand-500 counter-value" data-target="843">0</div>
+            <div class="text-xs text-brand-600/50 font-bold tracking-wider uppercase mt-2">Verified Reviews</div>
+            <p class="text-xs text-brand-700/60 mt-1">Highly rated on Google with 4.5★ stars</p>
+          </div>
+          <div class="p-6 bg-white rounded-3xl border border-brand-100 shadow-xl shadow-brand-500/5">
+            <div class="font-display text-4xl font-bold text-brand-500 counter-value" data-target="500">0</div>
+            <div class="text-xs text-brand-600/50 font-bold tracking-wider uppercase mt-2">Cakes Monthly</div>
+            <p class="text-xs text-brand-700/60 mt-1">Baked with precision and artistry</p>
+          </div>
+          <div class="p-6 bg-white rounded-3xl border border-brand-100 shadow-xl shadow-brand-500/5">
+            <div class="font-display text-4xl font-bold text-gold-500">4.5★</div>
+            <div class="text-xs text-brand-600/50 font-bold tracking-wider uppercase mt-2">Average Rating</div>
+            <p class="text-xs text-brand-700/60 mt-1">The town's absolute favorite</p>
+          </div>
+          <div class="p-6 bg-white rounded-3xl border border-brand-100 shadow-xl shadow-brand-500/5">
+            <div class="font-display text-4xl font-bold text-brand-500 counter-value" data-target="15">0</div>
+            <div class="text-xs text-brand-600/50 font-bold tracking-wider uppercase mt-2">Years Exp</div>
+            <p class="text-xs text-brand-700/60 mt-1">Experience in master pastry craft</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN STORY SECTION -->
+  <div id="storySection" class="py-24 relative overflow-hidden bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="relative about-visual">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-500/10 aspect-[4/5]">
+            <img src="https://picsum.photos/seed/hotmillions-shop/800/1000.jpg" class="w-full h-full object-cover distort-img" alt="Hot Millions Bakery">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-900/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 glass rounded-2xl p-5">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-brand-500 rounded-xl flex items-center justify-center">
+                  <iconify-icon icon="mdi:store" width="24" class="text-white"></iconify-icon>
+                </div>
+                <div>
+                  <div class="text-white font-bold text-sm">Since Day One</div>
+                  <div class="text-white/60 text-xs">Rizwikhan, Jaunpur</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -top-6 -right-6 w-24 h-24 bg-gold-400/20 rounded-full blur-xl"></div>
+          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-500/10 rounded-full blur-xl"></div>
+        </div>
+
+        <div class="space-y-8 about-content">
+          <div>
+            <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Our Commitment</span>
+            <h2 class="font-display text-4xl font-bold text-brand-800 leading-tight">
+              Where Every Recipe <br><span class="italic text-brand-500">Begins with Love</span>
+            </h2>
+          </div>
+          <p class="text-brand-700/60 text-lg leading-relaxed">
+            Hot Millions Bakery has been Jaunpur's beloved destination for premium bakery items, cakes, chocolates, and pastries. From our humble shop at Rizwikhan near Nagar Palika, we've grown through the love and trust of 843+ verified reviewers who vouch for our quality, hygiene, and taste.
+          </p>
+          <p class="text-brand-700/60 leading-relaxed">
+            We believe that a cake is not just dessert — it is the centerpiece of your most cherished celebrations. Whether it is a beautiful birthday cake, a spectacular wedding masterpiece, or just the perfect flaky butterscotch pastry — we craft every item with the finest ingredients and unmatched passion.
+          </p>
+          
+          <div class="grid grid-cols-3 gap-4 pt-4 text-center">
+            <div class="p-4 glass rounded-2xl">
+              <iconify-icon icon="mdi:security" class="text-brand-500 text-3xl mb-1"></iconify-icon>
+              <div class="font-bold text-brand-800 text-sm">100% Hygienic</div>
+              <p class="text-[10px] text-brand-600/50 mt-1">Surgical cleanliness in prep</p>
+            </div>
+            <div class="p-4 glass rounded-2xl">
+              <iconify-icon icon="mdi:wheat" class="text-brand-500 text-3xl mb-1"></iconify-icon>
+              <div class="font-bold text-brand-800 text-sm">Fresh Everyday</div>
+              <p class="text-[10px] text-brand-600/50 mt-1">Baked daily with premium butter</p>
+            </div>
+            <div class="p-4 glass rounded-2xl">
+              <iconify-icon icon="mdi:heart-pulse" class="text-brand-500 text-3xl mb-1"></iconify-icon>
+              <div class="font-bold text-brand-800 text-sm">Rich Taste</div>
+              <p class="text-[10px] text-brand-600/50 mt-1">Voted best flavor in Jaunpur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE SECTION -->
+  <div class="py-24 bg-cream-50 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Our History</span>
+        <h2 class="font-display text-4xl font-bold text-brand-800 tracking-tight">Our Journey</h2>
+      </div>
+      <div class="relative">
+        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold-300 via-brand-300 to-transparent"></div>
+        <div class="space-y-12">
+          <div class="timeline-item relative flex items-center gap-8">
+            <div class="flex-1 text-right pr-8">
+              <div class="font-display text-2xl font-bold text-brand-500">The Beginning</div>
+              <p class="text-brand-700/60 text-sm mt-2">Opened doors at Rizwikhan, Jaunpur with a dream to serve the finest bakery items.</p>
+            </div>
+            <div class="w-4 h-4 bg-gold-400 rounded-full border-4 border-cream-50 z-10 flex-shrink-0"></div>
+            <div class="flex-1 pl-8"></div>
+          </div>
+          <div class="timeline-item relative flex items-center gap-8">
+            <div class="flex-1 pr-8"></div>
+            <div class="w-4 h-4 bg-brand-500 rounded-full border-4 border-cream-50 z-10 flex-shrink-0"></div>
+            <div class="flex-1 text-left pl-8">
+              <div class="font-display text-2xl font-bold text-brand-500">Growing Love</div>
+              <p class="text-brand-700/60 text-sm mt-2">Became the go-to bakery for custom cakes, handcrafted artisan chocolates, and pastries in Jaunpur.</p>
+            </div>
+          </div>
+          <div class="timeline-item relative flex items-center gap-8">
+            <div class="flex-1 text-right pr-8">
+              <div class="font-display text-2xl font-bold text-brand-500">843+ Reviews</div>
+              <p class="text-brand-700/60 text-sm mt-2">Rated 4.5★ by hundreds of verified customers on Google. Quality you can trust.</p>
+            </div>
+            <div class="w-4 h-4 bg-gold-400 rounded-full border-4 border-cream-50 z-10 flex-shrink-0"></div>
+            <div class="flex-1 pl-8"></div>
+          </div>
+          <div class="timeline-item relative flex items-center gap-8">
+            <div class="flex-1 pr-8"></div>
+            <div class="w-4 h-4 bg-brand-500 rounded-full border-4 border-cream-50 z-10 flex-shrink-0"></div>
+            <div class="flex-1 text-left pl-8">
+              <div class="font-display text-2xl font-bold text-gold-500">Today & Beyond</div>
+              <p class="text-brand-700/60 text-sm mt-2">Now offering delivery, drive-through, and custom digital orders — making every celebration sweeter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM SECTION -->
+  <div id="team" class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 team-header">
+        <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Our Kitchen Team</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-800 tracking-tight">
+          The <span class="italic text-brand-500">Makers</span> Behind the Magic
+        </h2>
+        <p class="text-brand-700/50 mt-4 max-w-xl mx-auto">Hover over the cards below to discover the expertise and creative spirits baking your treats.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="team-card h-[420px] relative group">
+          <div class="team-card-inner w-full h-full relative">
+            <div class="team-card-front">
+              <img src="https://picsum.photos/seed/head-baker/400/420.jpg" class="w-full h-full object-cover" alt="Head Baker">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-900/80 via-brand-900/20 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="font-display text-xl font-bold text-white">Master Baker</div>
+                <div class="text-gold-400 text-sm">Head of Kitchen</div>
+              </div>
+            </div>
+            <div class="team-card-back bg-gradient-to-br from-brand-500 to-brand-700 flex flex-col items-center justify-center p-8 text-center">
+              <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                <iconify-icon icon="mdi:chef-hat" width="36" class="text-gold-400"></iconify-icon>
+              </div>
+              <div class="font-display text-xl font-bold text-white mb-2">Master Baker</div>
+              <p class="text-white/60 text-sm leading-relaxed">15+ years of baking excellence. Specializes in wedding cakes and artisan pastries.</p>
+              <div class="flex gap-3 mt-4">
+                <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                  <iconify-icon icon="mdi:instagram" width="16" class="text-white"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card h-[420px] relative group">
+          <div class="team-card-inner w-full h-full relative">
+            <div class="team-card-front">
+              <img src="https://picsum.photos/seed/cake-decorator/400/420.jpg" class="w-full h-full object-cover" alt="Cake Decorator">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-900/80 via-brand-900/20 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="font-display text-xl font-bold text-white">Cake Artist</div>
+                <div class="text-gold-400 text-sm">Design Specialist</div>
+              </div>
+            </div>
+            <div class="team-card-back bg-gradient-to-br from-gold-500 to-brand-600 flex flex-col items-center justify-center p-8 text-center">
+              <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                <iconify-icon icon="mdi:palette" width="36" class="text-gold-400"></iconify-icon>
+              </div>
+              <div class="font-display text-xl font-bold text-white mb-2">Cake Artist</div>
+              <p class="text-white/60 text-sm leading-relaxed">Turning your dreams into edible art. Custom designs that leave everyone amazed.</p>
+              <div class="flex gap-3 mt-4">
+                <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                  <iconify-icon icon="mdi:instagram" width="16" class="text-white"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card h-[420px] relative group">
+          <div class="team-card-inner w-full h-full relative">
+            <div class="team-card-front">
+              <img src="https://picsum.photos/seed/chocolate-expert/400/420.jpg" class="w-full h-full object-cover" alt="Chocolatier">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-900/80 via-brand-900/20 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="font-display text-xl font-bold text-white">Chocolatier</div>
+                <div class="text-gold-400 text-sm">Chocolate Expert</div>
+              </div>
+            </div>
+            <div class="team-card-back bg-gradient-to-br from-brand-600 to-brand-800 flex flex-col items-center justify-center p-8 text-center">
+              <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                <iconify-icon icon="mdi:candy" width="36" class="text-gold-400"></iconify-icon>
+              </div>
+              <div class="font-display text-xl font-bold text-white mb-2">Chocolatier</div>
+              <p class="text-white/60 text-sm leading-relaxed">Handcrafting premium chocolates and cheese selections that define indulgence.</p>
+              <div class="flex gap-3 mt-4">
+                <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                  <iconify-icon icon="mdi:instagram" width="16" class="text-white"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MENU SECTION -->
+<section id="menu" class="py-24 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 menu-header">
+      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Explore Our Categories</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-800 tracking-tight">
+        Delights for <span class="italic text-brand-500">Every Craving</span>
+      </h2>
+      <p class="text-brand-700/50 mt-4 max-w-xl mx-auto">Click any category below to browse the detailed menu, check prices, and choose your favorite sweet or savory delights.</p>
+    </div>
+
+    <!-- Browse & Order Directly Option -->
+    <div class="flex justify-center mb-12">
+      <a href="menu.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white px-8 py-4 rounded-2xl font-bold text-sm tracking-wide shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+        <iconify-icon icon="mdi:storefront-outline" width="18" class="text-gold-300 animate-pulse"></iconify-icon>
+        <span>Browse & Order Directly</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="menu.html?category=Cakes" class="menu-card group relative rounded-3xl overflow-hidden aspect-[4/5] block shadow-lg">
+        <img src="https://picsum.photos/seed/cakes-premium/400/530.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Cakes">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <iconify-icon icon="mdi:cake-variant" width="20" class="text-gold-400"></iconify-icon>
+            <span class="text-gold-300 text-xs tracking-wider uppercase font-bold">Premium</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white">Cakes</h3>
+          <p class="text-white/60 text-sm mt-1">Birthday • Wedding • Custom Themes</p>
+          <span class="inline-block mt-4 text-gold-400 text-xs font-semibold">Explore Menu →</span>
+        </div>
+      </a>
+
+      <a href="menu.html?category=Pastries" class="menu-card group relative rounded-3xl overflow-hidden aspect-[4/5] block shadow-lg">
+        <img src="https://picsum.photos/seed/pastries-flaky/400/530.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Pastries">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <iconify-icon icon="mdi:cookie" width="20" class="text-gold-400"></iconify-icon>
+            <span class="text-gold-300 text-xs tracking-wider uppercase font-bold">Fresh</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white">Pastries</h3>
+          <p class="text-white/60 text-sm mt-1">Butterscotch • Vanilla • Black Forest</p>
+          <span class="inline-block mt-4 text-gold-400 text-xs font-semibold">Explore Menu →</span>
+        </div>
+      </a>
+
+      <a href="menu.html?category=Chocolates" class="menu-card group relative rounded-3xl overflow-hidden aspect-[4/5] block shadow-lg">
+        <img src="https://picsum.photos/seed/chocolates-artisan/400/530.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Chocolates">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <iconify-icon icon="mdi:candy" width="20" class="text-gold-400"></iconify-icon>
+            <span class="text-gold-300 text-xs tracking-wider uppercase font-bold">Artisan</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white">Chocolates</h3>
+          <p class="text-white/60 text-sm mt-1">Gourmet Handmade • Luxe Gifting</p>
+          <span class="inline-block mt-4 text-gold-400 text-xs font-semibold">Explore Menu →</span>
+        </div>
+      </a>
+
+      <a href="menu.html?category=Savory" class="menu-card group relative rounded-3xl overflow-hidden aspect-[4/5] block shadow-lg">
+        <img src="https://picsum.photos/seed/savory-pizza/400/530.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Savories">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <iconify-icon icon="mdi:pizza" width="20" class="text-gold-400"></iconify-icon>
+            <span class="text-gold-300 text-xs tracking-wider uppercase font-bold">Hot & Cheesy</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white">Savories</h3>
+          <p class="text-white/60 text-sm mt-1">Pizza • Fresh Paneer Patties • Mozzarella</p>
+          <span class="inline-block mt-4 text-gold-400 text-xs font-semibold">Explore Menu →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES SECTION -->
+<section id="specialties" class="py-24 md:py-32 bg-brand-800 relative overflow-x-clip grain">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(160,32,64,0.15),transparent_60%)]"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 products-header">
+      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Specialties</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
+        Our Signature <span class="italic text-gold-400">Creations</span>
+      </h2>
+    </div>
+
+    <div class="space-y-8" style="min-height:300vh">
+      <div class="stack-card bg-gradient-to-br from-brand-700 to-brand-900 p-6 md:p-12 border border-brand-600/20" style="margin-bottom:5vh">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Best Seller</span>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Butterscotch Cake</h3>
+            <p class="text-white/50 leading-relaxed mb-6">Our legendary butterscotch flavour cake — the one that keeps them coming back. Layers of creamy butterscotch with premium crunch.</p>
+            <div class="flex items-center gap-6">
+              <span class="text-gold-400 font-display text-2xl font-bold">₹500+</span>
+              <a href="#customizerSection" onclick="scrollToCustomizer('Butterscotch', 'Birthday')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
+                <span>Configure Cake</span>
+                <iconify-icon icon="mdi:cog" width="16"></iconify-icon>
+              </a>
+            </div>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <img src="https://picsum.photos/seed/butterscotch-cake/600/450.jpg" class="w-full h-full object-cover" alt="Butterscotch Cake">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-card bg-gradient-to-br from-brand-600 to-brand-800 p-6 md:p-12 border border-brand-500/20" style="margin-bottom:5vh">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Classic</span>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Vanilla Dream Cake</h3>
+            <p class="text-white/50 leading-relaxed mb-6">Pure vanilla elegance — soft, fluffy and utterly divine. A timeless classic made with real vanilla bean extract.</p>
+            <div class="flex items-center gap-6">
+              <span class="text-gold-400 font-display text-2xl font-bold">₹400+</span>
+              <a href="#customizerSection" onclick="scrollToCustomizer('Vanilla Bean', 'Classic')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
+                <span>Configure Cake</span>
+                <iconify-icon icon="mdi:cog" width="16"></iconify-icon>
+              </a>
+            </div>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <img src="https://picsum.photos/seed/vanilla-dream-cake/600/450.jpg" class="w-full h-full object-cover" alt="Vanilla Cake">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-card bg-gradient-to-br from-brand-500 to-brand-700 p-6 md:p-12 border border-gold-400/20" style="margin-bottom:5vh">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Premium Masterpiece</span>
+            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Custom Wedding Cakes</h3>
+            <p class="text-white/50 leading-relaxed mb-6">Your dream wedding deserves a dream cake. Multi-tier masterpieces designed and crafted exclusively for your special day.</p>
+            <div class="flex items-center gap-6">
+              <span class="text-gold-400 font-display text-2xl font-bold">₹2,000+</span>
+              <a href="#customizerSection" onclick="scrollToCustomizer('Belgian Chocolate Fudge', 'Wedding')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
+                <span>Custom Enquiry</span>
+                <iconify-icon icon="mdi:heart" width="16"></iconify-icon>
+              </a>
+            </div>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <img src="https://picsum.photos/seed/weding-cake-luxury/600/450.jpg" class="w-full h-full object-cover" alt="Wedding Cake">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES MASTERPIECE GALLERY -->
+<section class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">The Masterpiece Gallery</span>
+      <h2 class="font-display text-4xl font-bold text-brand-800 tracking-tight">Our Legendary Showcase</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl p-6 border border-brand-700/20 shadow-2xl flex flex-col justify-between group">
+        <div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6 shadow-md bg-brand-900">
+            <img src="https://picsum.photos/seed/butterscotch-cake/600/450.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Butterscotch Cake">
+            <span class="absolute top-4 left-4 bg-gold-400 text-brand-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Best Seller</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white tracking-tight">Butterscotch Fantasy</h3>
+          <p class="text-white/60 text-sm mt-3 leading-relaxed">Our legendary, signature butterscotch cake. Layers of extremely soft crumb layered with sweet butterscotch-infused dairy cream, generously sprinkled with premium butter praline crunch made in-house.</p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+          <div>
+            <span class="text-gold-400 font-display text-2xl font-bold">₹500+</span>
+            <span class="text-white/30 text-[10px] block leading-none">Starting from</span>
+          </div>
+          <button onclick="scrollToCustomizer('Butterscotch', 'Birthday')" class="bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full text-xs font-bold hover:shadow-lg transition">Custom order</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl p-6 border border-brand-700/20 shadow-2xl flex flex-col justify-between group">
+        <div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6 shadow-md bg-brand-900">
+            <img src="https://picsum.photos/seed/vanilla-dream-cake/600/450.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Vanilla Cake">
+            <span class="absolute top-4 left-4 bg-gold-400 text-brand-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Elegant Class</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white tracking-tight">Vanilla Dreamscape</h3>
+          <p class="text-white/60 text-sm mt-3 leading-relaxed">Pure vanilla elegance — soft, airy, and utterly divine. Built using natural vanilla pods, layered with whipped white cloud icing and topped with elegant hand-piped rosettes and fresh cherries.</p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+          <div>
+            <span class="text-gold-400 font-display text-2xl font-bold">₹400+</span>
+            <span class="text-white/30 text-[10px] block leading-none">Starting from</span>
+          </div>
+          <button onclick="scrollToCustomizer('Vanilla Bean', 'Classic')" class="bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full text-xs font-bold hover:shadow-lg transition">Custom order</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-gradient-to-br from-brand-800 to-brand-950 rounded-3xl p-6 border border-brand-700/20 shadow-2xl flex flex-col justify-between group">
+        <div>
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-6 shadow-md bg-brand-900">
+            <img src="https://picsum.photos/seed/weding-cake-luxury/600/450.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Wedding Cake">
+            <span class="absolute top-4 left-4 bg-brand-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Luxury Tier</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white tracking-tight">Custom Royal Wedding Tier</h3>
+          <p class="text-white/60 text-sm mt-3 leading-relaxed">Your majestic dream wedding deserves an matching edible monument. Multitier structures designed with handcrafted fondant drapes, sugar flowers, royal icing lace, and customized monograms.</p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+          <div>
+            <span class="text-gold-400 font-display text-2xl font-bold">₹2,000+</span>
+            <span class="text-white/30 text-[10px] block leading-none">Starting from</span>
+          </div>
+          <button onclick="scrollToCustomizer('Belgian Chocolate Fudge', 'Wedding')" class="bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full text-xs font-bold hover:shadow-lg transition">Custom order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAKE CUSTOMIZER FORM -->
+<section id="customizerSection" class="py-24 bg-cream-50 relative overflow-hidden border-t border-brand-100">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Interactive Builder</span>
+      <h2 class="font-display text-4xl font-bold text-brand-800 tracking-tight">Configure Your Dream Cake</h2>
+      <p class="text-brand-700/60 mt-3 max-w-md mx-auto text-sm">Select options below to generate a customized WhatsApp order request. We will contact you instantly to finalize price and scheduling.</p>
+    </div>
+
+    <div class="bg-white rounded-3xl border border-brand-100 shadow-2xl p-8 md:p-12 relative">
+      <form id="cakeCustomizerForm">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          
+          <!-- Category Selector -->
+          <div>
+            <label class="block text-brand-800 text-xs font-extrabold uppercase tracking-wider mb-2">Cake Category</label>
+            <select id="cakeCategory" required class="w-full bg-cream-50 border border-brand-100 rounded-2xl px-4 py-3.5 text-brand-800 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition">
+              <option value="Birthday Cake">Birthday Celebration Cake</option>
+              <option value="Wedding Masterpiece">Wedding Multi-Tier Cake</option>
+              <option value="Anniversary special">Anniversary Designer Cake</option>
+              <option value="Cartoon / Theme Cake">Kids Cartoon / Toy Theme Cake</option>
+              <option value="Gourmet Casual Cake">Casual Gathering / Gift Cake</option>
+            </select>
+          </div>
+
+          <!-- Flavour Selector -->
+          <div>
+            <label class="block text-brand-800 text-xs font-extrabold uppercase tracking-wider mb-2">Sponge Flavour</label>
+            <select id="cakeFlavour" required class="w-full bg-cream-50 border border-brand-100 rounded-2xl px-4 py-3.5 text-brand-800 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition">
+              <option value="Signature Butterscotch">Signature Butterscotch (Crunchy Nougat)</option>
+              <option value="Belgian Chocolate Fudge">Rich Belgian Chocolate Fudge</option>
+              <option value="Classic Vanilla Bean">Classic Madagascar Vanilla Bean</option>
+              <option value="Royal Red Velvet">Tangy Cream-Cheese Red Velvet</option>
+              <option value="Tropical Pineapple Sunshine">Fresh Whipped Pineapple slices</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          
+          <!-- Weight Selector -->
+          <div>
+            <label class="block text-brand-800 text-xs font-extrabold uppercase tracking-wider mb-2">Cake Weight</label>
+            <select id="cakeWeight" required class="w-full bg-cream-50 border border-brand-100 rounded-2xl px-4 py-3.5 text-brand-800 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition">
+              <option value="0.5 kg (Small)">0.5 kg (Serves 4 - 6 people)</option>
+              <option value="1.0 kg (Medium)">1.0 kg (Serves 8 - 12 people)</option>
+              <option value="1.5 kg">1.5 kg (Serves 12 - 18 people)</option>
+              <option value="2.0 kg (Large)">2.0 kg (Serves 18 - 25 people)</option>
+              <option value="3.0+ kg / Custom Multitier">3.0+ kg (Multi-Tier Special Request)</option>
+            </select>
+          </div>
+
+          <!-- Message on Cake -->
+          <div>
+            <label class="block text-brand-800 text-xs font-extrabold uppercase tracking-wider mb-2">Message Written on Cake</label>
+            <input type="text" id="cakeMessage" class="w-full bg-cream-50 border border-brand-100 rounded-2xl px-4 py-3.5 text-brand-800 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition" placeholder="e.g., Happy 21st Birthday Rahul">
+          </div>
+
+        </div>
+
+        <!-- Decor Requests / Custom Instructions -->
+        <div class="mb-8">
+          <label class="block text-brand-800 text-xs font-extrabold uppercase tracking-wider mb-2">Special Custom Requests</label>
+          <textarea id="cakeRequests" rows="3" class="w-full bg-cream-50 border border-brand-100 rounded-2xl px-4 py-3.5 text-brand-800 font-medium focus:outline-none focus:border-brand-500 focus:bg-white transition resize-none" placeholder="e.g., 100% Eggless required, Make it less sweet, Add golden glitter accents, cartoon crown topper request..."></textarea>
+        </div>
+
+        <!-- Submit to Whatsapp Button -->
+        <button type="submit" class="magnetic-btn w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white py-4.5 rounded-2xl font-bold text-base hover:shadow-xl hover:shadow-brand-500/20 transition-all flex items-center justify-center gap-3">
+          <iconify-icon icon="mdi:whatsapp" width="22" class="text-green-300"></iconify-icon>
+          <span>Submit Custom Inquiry to WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-500/5 rounded-full blur-[120px]"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 testimonials-header">
+      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Reviews</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-brand-800 tracking-tight">
+        Trusted by <span class="italic text-brand-500">Thousands</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card glass rounded-2xl p-8 relative">
+        <div class="absolute top-6 right-6 font-display text-6xl text-brand-100 leading-none">"</div>
+        <div class="flex items-center gap-1 mb-4">
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+        </div>
+        <p class="text-brand-700/70 leading-relaxed mb-6 relative z-10">They did an amazing job on my niece's birthday cake. It looked beautiful and tasted delicious. Highly recommended ❣️</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/tahzeb/48/48.jpg" class="w-10 h-10 rounded-full object-cover" alt="Tahzeb Khan">
+          <div>
+            <div class="font-semibold text-brand-800 text-sm">Tahzeb Khan</div>
+            <div class="text-brand-600/40 text-xs">Verified Customer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card glass rounded-2xl p-8 relative">
+        <div class="absolute top-6 right-6 font-display text-6xl text-brand-100 leading-none">"</div>
+        <div class="flex items-center gap-1 mb-4">
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+        </div>
+        <p class="text-brand-700/70 leading-relaxed mb-6 relative z-10">Jaunpur me Bakery items, Cakes, Chocolates, Cheese, pastry k liye best Shop. I found this after asking so many people around the city.</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/yashwant/48/48.jpg" class="w-10 h-10 rounded-full object-cover" alt="Yashwant Yadav">
+          <div>
+            <div class="font-semibold text-brand-800 text-sm">Yashwant Yadav</div>
+            <div class="text-brand-600/40 text-xs">Local Guide · 69 reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card glass rounded-2xl p-8 relative">
+        <div class="absolute top-6 right-6 font-display text-6xl text-brand-100 leading-none">"</div>
+        <div class="flex items-center gap-1 mb-4">
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+          <iconify-icon icon="mdi:star" width="16" class="text-gold-400"></iconify-icon>
+        </div>
+        <p class="text-brand-700/70 leading-relaxed mb-6 relative z-10">Very hygienic and quality of products delivered. They deliver the order on time if you place the order from their store. Great service!</p>
+        <div class="flex items-center gap-3">
+          <img src="https://picsum.photos/seed/saksham/48/48.jpg" class="w-10 h-10 rounded-full object-cover" alt="Saksham Srivastava">
+          <div>
+            <div class="font-semibold text-brand-800 text-sm">Saksham Srivastava</div>
+            <div class="text-brand-600/40 text-xs">Local Guide · 24 reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center testimonials-summary">
+      <div class="inline-flex items-center gap-6 glass rounded-2xl px-8 py-6 shadow-xl">
+        <div class="text-center">
+          <div class="font-display text-4xl font-bold text-brand-500">4.5</div>
+          <div class="flex items-center gap-0.5 mt-1 justify-center">
+            <iconify-icon icon="mdi:star" width="14" class="text-gold-400"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="14" class="text-gold-400"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="14" class="text-gold-400"></iconify-icon>
+            <iconify-icon icon="mdi:star" width="14" class="text-gold-400"></iconify-icon>
+            <iconify-icon icon="mdi:star-half-full" width="14" class="text-gold-400"></iconify-icon>
+          </div>
+        </div>
+        <div class="w-px h-12 bg-brand-200"></div>
+        <div class="text-center">
+          <div class="font-display text-4xl font-bold text-brand-800">843</div>
+          <div class="text-xs text-brand-600/50">Google Reviews</div>
+        </div>
+        <div class="w-px h-12 bg-brand-200"></div>
+        <div class="text-center">
+          <div class="font-display text-4xl font-bold text-gold-500">Top</div>
+          <div class="text-xs text-brand-600/50">In Jaunpur</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16">
+      
+      <!-- Contact details cards column -->
+      <div class="space-y-8">
+        <div>
+          <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-3">Bakery Info</span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-brand-800 tracking-tight leading-tight">Visit Us or <br><span class="italic text-brand-500">Reach Out Instantly</span></h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="p-6 bg-cream-50 rounded-2xl border border-brand-100">
+            <iconify-icon icon="mdi:phone-in-talk" class="text-brand-500 text-3xl mb-3"></iconify-icon>
+            <div class="font-bold text-brand-800 text-sm">Call / WhatsApp</div>
+            <p class="text-xs text-brand-700/60 mt-1">Our dedicated team is ready to answer calls & chat messages.</p>
+            <a href="tel:+919140893400" class="block text-brand-500 font-bold text-sm mt-3 hover:underline">+91 9140893400</a>
+          </div>
+
+          <div class="p-6 bg-cream-50 rounded-2xl border border-brand-100">
+            <iconify-icon icon="mdi:clock-time-four-outline" class="text-brand-500 text-3xl mb-3"></iconify-icon>
+            <div class="font-bold text-brand-800 text-sm">Opening Hours</div>
+            <p class="text-xs text-brand-700/60 mt-1">Open daily for takeouts, drive-through and doorstep cake deliveries.</p>
+            <div class="text-brand-800 font-bold text-xs mt-3">09:00 AM — 10:00 PM</div>
+          </div>
+        </div>
+
+        <div class="p-6 bg-cream-50 rounded-2xl border border-brand-100 flex items-start gap-4">
+          <iconify-icon icon="mdi:map-marker-radius" class="text-brand-500 text-4xl flex-shrink-0 mt-1"></iconify-icon>
+          <div>
+            <div class="font-bold text-brand-800 text-sm">Physical Bakery Address</div>
+            <p class="text-xs text-brand-700/60 mt-1">Visit us in person to sample our gourmet chocolates, cheese selections, or discuss custom wedding requests.</p>
+            <div class="text-brand-800 font-semibold text-xs mt-3 leading-relaxed">
+              31 Rizwikhan Near Nagar Palika, Kotwali,<br>
+              Jaunpur, Uttar Pradesh — 222001
+            </div>
+            <a href="https://maps.google.com/?q=Hot+Millions+Bakery+Jaunpur" target="_blank" class="inline-flex items-center gap-1.5 text-brand-500 text-xs font-bold mt-4 hover:underline">
+              <span>Open in Google Maps</span>
+              <iconify-icon icon="mdi:open-in-new" width="14"></iconify-icon>
+            </a>
+          </div>
+        </div>
+
+        <!-- Google map integration -->
+        <div class="rounded-3xl overflow-hidden border border-brand-100 shadow-xl h-64 relative bg-brand-50">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.3117565451206!2d82.68452397631317!3d25.759404277353913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3990373df96c6a61%3A0xc48c4cf37c48f2fa!2sHot%20Million%20Bakery!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            class="w-full h-full border-none" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Quick Message Form -->
+      <div class="bg-cream-50/50 rounded-3xl border border-brand-100 p-8 md:p-12 shadow-sm">
+        <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Send a Message</span>
+        <h3 class="font-display text-2xl font-bold text-brand-800 mb-6">Online Enquiry Form</h3>
+        <form id="contactForm" class="space-y-6">
+          <div>
+            <label class="block text-brand-800 text-xs font-bold uppercase tracking-wider mb-2">Full Name</label>
+            <input type="text" id="contactName" required class="w-full bg-white border border-brand-100 rounded-2xl px-4 py-3 text-brand-800 text-sm focus:outline-none focus:border-brand-500 transition shadow-sm" placeholder="e.g., Anjali Sharma">
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-brand-800 text-xs font-bold uppercase tracking-wider mb-2">Phone Number</label>
+              <input type="tel" id="contactPhone" required class="w-full bg-white border border-brand-100 rounded-2xl px-4 py-3 text-brand-800 text-sm focus:outline-none focus:border-brand-500 transition shadow-sm" placeholder="e.g., 9140893400">
+            </div>
+            <div>
+              <label class="block text-brand-800 text-xs font-bold uppercase tracking-wider mb-2">Subject</label>
+              <select id="contactSubject" class="w-full bg-white border border-brand-100 rounded-2xl px-4 py-3 text-brand-800 text-sm focus:outline-none focus:border-brand-500 transition shadow-sm">
+                <option value="Cake Order">Placing a Cake Order</option>
+                <option value="Custom Party Request">Custom Theme/Wedding Booking</option>
+                <option value="Feedback">Store Feedback / Reviews</option>
+                <option value="General Query">General Inquiry / Dairy</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-brand-800 text-xs font-bold uppercase tracking-wider mb-2">Your Message</label>
+            <textarea id="contactMessage" required rows="4" class="w-full bg-white border border-brand-100 rounded-2xl px-4 py-3 text-brand-800 text-sm focus:outline-none focus:border-brand-500 transition shadow-sm resize-none" placeholder="Let us know what you need in detail..."></textarea>
+          </div>
+
+          <button type="submit" class="magnetic-btn w-full bg-gradient-to-r from-brand-500 to-brand-600 text-white py-4 rounded-2xl font-bold text-sm hover:shadow-lg transition flex items-center justify-center gap-2">
+            <iconify-icon icon="mdi:send-variant" width="18"></iconify-icon>
+            <span>Submit Inquiry</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-20 bg-brand-900 text-white relative overflow-hidden grain">
+  <div class="absolute inset-0 bg-gradient-to-tr from-brand-950/80 via-transparent to-brand-800/80"></div>
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-8">
+    <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400">Order & Celebrations</span>
+    <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+      Have a Dream Cake <br>In Mind?
+    </h2>
+    <p class="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+      Whether it is a custom themed birthday, a glamorous multi-tier wedding showstopper, or some specialty pastries, let us bake it for you!
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#contact" class="magnetic-btn inline-flex items-center gap-3 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-8 py-4 rounded-full font-bold shadow-lg shadow-gold-500/10 hover:shadow-gold-500/30 transition-all">
+        <span>Order Online</span>
+        <iconify-icon icon="mdi:chevron-right" width="20"></iconify-icon>
+      </a>
+      <a href="https://wa.me/919140893400" target="_blank" class="magnetic-btn inline-flex items-center gap-3 bg-white/5 border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold transition-all">
+        <iconify-icon icon="mdi:whatsapp" width="20" class="text-green-400"></iconify-icon>
+        <span>Discuss on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-900 text-white relative overflow-hidden border-t border-brand-800">
+  <div class="max-w-7xl mx-auto px-6 pt-20 pb-8">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-gold-400 flex items-center justify-center text-white font-display font-bold text-xl">H</div>
+          <div>
+            <div class="font-display text-xl font-bold">Hot Millions</div>
+            <div class="text-gold-400 text-xs tracking-wider">हॉट मिलियन्स बेकरी</div>
+          </div>
+        </div>
+        <p class="text-white/40 leading-relaxed max-w-sm mb-6">Jaunpur's most loved bakery — crafting unforgettable cakes, pastries & chocolates with love, hygiene, and premium ingredients.</p>
+        <div class="flex gap-3">
+          <a href="https://instagram.com/hotmillionsjaunpur" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:border-brand-500 transition">
+            <iconify-icon icon="mdi:instagram" width="18" class="text-white"></iconify-icon>
+          </a>
+          <a href="https://www.zomato.com/jaunpur/hot-million-bakery-jaunpur-locality" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:border-brand-500 transition">
+            <iconify-icon icon="mdi:food" width="18" class="text-white"></iconify-icon>
+          </a>
+          <a href="https://wa.me/919140893400" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-green-600 hover:border-green-600 transition">
+            <iconify-icon icon="mdi:whatsapp" width="18" class="text-white"></iconify-icon>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gold-400">Pages</h4>
+        <ul class="space-y-3">
+          <li><a href="#hero" class="text-white/40 hover:text-white transition text-sm">Home</a></li>
+          <li><a href="#about" class="text-white/40 hover:text-white transition text-sm">About Us</a></li>
+          <li><a href="#menu" class="text-white/40 hover:text-white transition text-sm">Our Menu</a></li>
+          <li><a href="#specialties" class="text-white/40 hover:text-white transition text-sm">Specialties</a></li>
+          <li><a href="#contact" class="text-white/40 hover:text-white transition text-sm">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-sm uppercase tracking-wider mb-6 text-gold-400">Newsletter</h4>
+        <p class="text-white/40 text-sm mb-4">Get updates on new flavors, seasonal specials & exclusive offers.</p>
+        <form id="newsletterForm" class="flex gap-2">
+          <input type="email" required placeholder="Your email" class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-gold-400/50 transition">
+          <button type="submit" class="bg-gradient-to-r from-brand-500 to-gold-400 text-white px-4 py-2.5 rounded-xl font-semibold text-sm hover:shadow-lg transition">
+            <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/20 text-xs">© 2024 Hot Millions Bakery. All rights reserved. Made with ❤️ in Jaunpur.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-white/20 hover:text-white/40 text-xs transition">Privacy</a>
+        <a href="#" class="text-white/20 hover:text-white/40 text-xs transition">Terms</a>
+        <a href="https://www.zomato.com/jaunpur/hot-million-bakery-jaunpur-locality" target="_blank" class="text-white/20 hover:text-white/40 text-xs transition">Zomato</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/919140893400?text=Hi!%20I'd%20like%20to%20place%20an%20order%20from%20Hot%20Millions%20Bakery" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <iconify-icon icon="mdi:whatsapp" width="30" class="text-white"></iconify-icon>
+</a>
+
+<script src="/assets/js/main.js"></script>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Hot Millions Bakery",
+  "alternateName": "हॉट मिलियन्स बेकरी",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "31 Rizwikhan Near Nagar Palika, Kotwali",
+    "addressLocality": "Jaunpur",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "222001",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919140893400",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "843"
+  },
+  "priceRange": "₹1–800",
+  "servesCuisine": ["Bakery", "Cakes", "Pastries", "Chocolates"],
+  "openingHours": "Mo-Su 09:00-22:00",
+  "sameAs": [
+    "https://instagram.com/hotmillionsjaunpur",
+    "https://www.zomato.com/jaunpur/hot-million-bakery-jaunpur-locality"
+  ]
+}
+</script>
+
+</body>
+</html>

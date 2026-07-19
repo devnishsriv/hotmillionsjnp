@@ -1,0 +1,15 @@
+{
+  "name": "hotmillions-bakery-jaunpur",
+  "version": "1.0.0",
+  "description": "Hot Millions Bakery — Jaunpur's Finest Premium cakes, pastries, chocolates and bakery items.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'No build step required'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
