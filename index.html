@@ -11,6 +11,7 @@
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght=300;400;500;600;700&family=DM+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 <script>
@@ -101,7 +102,7 @@ tailwind.config = {
 </nav>
 
 <!-- HERO SECTION -->
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+<section id="hero" class="relative min-h-screen flex items-center ">
   <div class="absolute inset-0">
     <div class="absolute inset-0 bg-gradient-to-br from-cream-50 via-white to-brand-50/30"></div>
     <div class="absolute top-20 right-20 w-[500px] h-[500px] rounded-full bg-brand-500/5 blur-[100px]"></div>
@@ -164,7 +165,7 @@ tailwind.config = {
         <div class="absolute inset-0 border-2 border-dashed border-gold-300/30 rounded-full animate-spin" style="animation-duration:30s"></div>
         <div class="absolute inset-8 border border-brand-200/20 rounded-full animate-spin" style="animation-duration:20s;animation-direction:reverse"></div>
         
-        <div class="absolute inset-16 rounded-full overflow-hidden shadow-2xl shadow-brand-500/20 glow-brand">
+        <div class="absolute inset-16 rounded-full  shadow-2xl shadow-brand-500/20 glow-brand">
           <img src="https://picsum.photos/seed/bakery-hero-cake/600/600.jpg" class="w-full h-full object-cover distort-img" alt="Premium Cake">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-900/20 to-transparent"></div>
         </div>
@@ -212,7 +213,7 @@ tailwind.config = {
 </section>
 
 <!-- MARQUEE -->
-<div class="py-6 bg-brand-800 overflow-hidden">
+<div class="py-6 bg-brand-800 ">
   <div class="marquee-track">
     <span class="flex items-center gap-8 px-4 text-white/80 text-sm font-medium tracking-wider uppercase whitespace-nowrap">
       <span>★ Premium Cakes</span><span>★ Fresh Pastries</span><span>★ Custom Designs</span><span>★ Wedding Cakes</span><span>★ Birthday Specials</span><span>★ Artisan Chocolates</span><span>★ Cheese & Savories</span><span>★ Home Delivery</span><span>★ Drive-Through</span><span>★ Jaunpur's Best</span>
@@ -224,7 +225,7 @@ tailwind.config = {
 </div>
 
 <!-- ABOUT US SECTION -->
-<section id="about" class="relative overflow-hidden">
+<section id="about" class="relative ">
   
   <!-- QUICK STATS / WELCOME SECTION -->
   <div class="py-20 bg-cream-50/50">
@@ -272,11 +273,11 @@ tailwind.config = {
   </div>
 
   <!-- MAIN STORY SECTION -->
-  <div id="storySection" class="py-24 relative overflow-hidden bg-white">
+  <div id="storySection" class="py-24 relative  bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="relative about-visual">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-500/10 aspect-[4/5]">
+          <div class="relative rounded-3xl  shadow-2xl shadow-brand-500/10 aspect-[4/5]">
             <img src="https://picsum.photos/seed/hotmillions-shop/800/1000.jpg" class="w-full h-full object-cover distort-img" alt="Hot Millions Bakery">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-900/40 via-transparent to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6 glass rounded-2xl p-5">
@@ -332,7 +333,7 @@ tailwind.config = {
   </div>
 
   <!-- TIMELINE SECTION -->
-  <div class="py-24 bg-cream-50 relative overflow-hidden">
+  <div class="py-24 bg-cream-50 relative ">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-16">
         <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Our History</span>
@@ -379,7 +380,7 @@ tailwind.config = {
   </div>
 
   <!-- TEAM SECTION -->
-  <div id="team" class="py-24 bg-white relative overflow-hidden">
+  <div id="team" class="py-24 bg-white relative ">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 team-header">
         <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Our Kitchen Team</span>
@@ -471,7 +472,7 @@ tailwind.config = {
 </section>
 
 <!-- MENU SECTION -->
-<section id="menu" class="py-24 bg-white relative overflow-hidden">
+<section id="menu" class="py-24 bg-white relative ">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16 menu-header">
       <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Explore Our Categories</span>
@@ -549,87 +550,81 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- SPECIALTIES SECTION -->
-<section id="specialties" class="py-24 md:py-32 bg-brand-800 relative overflow-x-clip grain">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(160,32,64,0.15),transparent_60%)]"></div>
-  <div class="max-w-7xl mx-auto px-6 relative">
-    <div class="text-center mb-16 products-header">
-      <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Specialties</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
-        Our Signature <span class="italic text-gold-400">Creations</span>
-      </h2>
+<!-- SPECIALTIES SECTION (Sticky Animation) -->
+<div id="specialties" class="wrapper bg-brand-950">
+  <section class="text-white h-screen w-full bg-brand-900 grid place-content-center sticky top-0">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    <h1 class="2xl:text-7xl text-6xl px-8 font-display font-bold text-center tracking-tight leading-[120%]">
+      I Know Exactly What You're <br /> Craving! Scroll Please 👇
+    </h1>
+  </section>
+
+  <section class="bg-cream-50 text-brand-900 grid place-content-center h-screen sticky top-0 rounded-tr-[3rem] rounded-tl-[3rem] ">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
+    <h1 class="2xl:text-7xl text-4xl px-8 font-display font-bold text-center tracking-tight leading-[120%] relative z-10">
+      If you don't like this Smooth Scroll then I'm sorry, <br /> but you'll definitely like our Butterscotch Cake 💼
+    </h1>
+  </section>
+
+  <section class="text-white h-screen w-full bg-brand-800 grid place-content-center sticky top-0 rounded-tr-[3rem] rounded-tl-[3rem] ">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    <h1 class="2xl:text-7xl text-5xl px-8 font-display font-bold text-center tracking-tight leading-[120%] relative z-10">
+      Don't Forget To Try <br /> Our Signature Custom Cakes 😎
+    </h1>
+  </section>
+</div>
+
+<section class="text-white w-full bg-brand-950 ">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <div class="sticky top-0 h-screen flex items-center justify-center">
+      <h1 class="2xl:text-7xl text-5xl px-8 font-display font-bold text-center tracking-tight leading-[120%]">
+        Thanks To Scroll.<br /> Now See Our Bestsellers ☝️🏿
+      </h1>
     </div>
+    <div class="grid gap-2 py-10">
+      <figure class="grid place-content-center -skew-x-12">
+        <img src="https://picsum.photos/seed/butterscotch-cake/500/600.jpg" alt="" class="transition-all duration-300 w-80 h-96 align-bottom object-cover rounded-2xl">
+      </figure>
+      <figure class="grid place-content-center skew-x-12">
+        <img src="https://picsum.photos/seed/vanilla-dream-cake/500/600.jpg" alt="" class="transition-all duration-300 w-80 h-96 align-bottom object-cover rounded-2xl">
+      </figure>
+      <figure class="grid place-content-center -skew-x-12">
+        <img src="https://picsum.photos/seed/weding-cake-luxury/500/600.jpg" alt="" class="transition-all duration-300 w-80 h-96 align-bottom object-cover rounded-2xl">
+      </figure>
+      <figure class="grid place-content-center skew-x-12">
+        <img src="https://picsum.photos/seed/choc-truffle/500/600.jpg" alt="" class="transition-all duration-300 w-80 h-96 align-bottom object-cover rounded-2xl">
+      </figure>
+    </div>
+  </div>
+</section>
 
-    <div class="space-y-8" style="min-height:300vh">
-      <div class="stack-card bg-gradient-to-br from-brand-700 to-brand-900 p-6 md:p-12 border border-brand-600/20" style="margin-bottom:5vh">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Best Seller</span>
-            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Butterscotch Cake</h3>
-            <p class="text-white/50 leading-relaxed mb-6">Our legendary butterscotch flavour cake — the one that keeps them coming back. Layers of creamy butterscotch with premium crunch.</p>
-            <div class="flex items-center gap-6">
-              <span class="text-gold-400 font-display text-2xl font-bold">₹500+</span>
-              <a href="#customizerSection" onclick="scrollToCustomizer('Butterscotch', 'Birthday')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
-                <span>Configure Cake</span>
-                <iconify-icon icon="mdi:cog" width="16"></iconify-icon>
-              </a>
-            </div>
-          </div>
-          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="https://picsum.photos/seed/butterscotch-cake/600/450.jpg" class="w-full h-full object-cover" alt="Butterscotch Cake">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="stack-card bg-gradient-to-br from-brand-600 to-brand-800 p-6 md:p-12 border border-brand-500/20" style="margin-bottom:5vh">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Classic</span>
-            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Vanilla Dream Cake</h3>
-            <p class="text-white/50 leading-relaxed mb-6">Pure vanilla elegance — soft, fluffy and utterly divine. A timeless classic made with real vanilla bean extract.</p>
-            <div class="flex items-center gap-6">
-              <span class="text-gold-400 font-display text-2xl font-bold">₹400+</span>
-              <a href="#customizerSection" onclick="scrollToCustomizer('Vanilla Bean', 'Classic')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
-                <span>Configure Cake</span>
-                <iconify-icon icon="mdi:cog" width="16"></iconify-icon>
-              </a>
-            </div>
-          </div>
-          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="https://picsum.photos/seed/vanilla-dream-cake/600/450.jpg" class="w-full h-full object-cover" alt="Vanilla Cake">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="stack-card bg-gradient-to-br from-brand-500 to-brand-700 p-6 md:p-12 border border-gold-400/20" style="margin-bottom:5vh">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <span class="inline-block text-gold-400 text-xs tracking-[0.3em] uppercase font-bold mb-3">Premium Masterpiece</span>
-            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Custom Wedding Cakes</h3>
-            <p class="text-white/50 leading-relaxed mb-6">Your dream wedding deserves a dream cake. Multi-tier masterpieces designed and crafted exclusively for your special day.</p>
-            <div class="flex items-center gap-6">
-              <span class="text-gold-400 font-display text-2xl font-bold">₹2,000+</span>
-              <a href="#customizerSection" onclick="scrollToCustomizer('Belgian Chocolate Fudge', 'Wedding')" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 text-brand-900 px-5 py-2.5 rounded-full font-bold text-sm hover:shadow-lg transition-all">
-                <span>Custom Enquiry</span>
-                <iconify-icon icon="mdi:heart" width="16"></iconify-icon>
-              </a>
-            </div>
-          </div>
-          <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="https://picsum.photos/seed/weding-cake-luxury/600/450.jpg" class="w-full h-full object-cover" alt="Wedding Cake">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/40 to-transparent"></div>
-          </div>
-        </div>
-      </div>
+<section class="text-white w-full bg-brand-900 pb-20 ">
+  <div class="grid grid-cols-1 md:grid-cols-2 px-8">
+    <div class="grid gap-2">
+      <figure class="sticky top-0 h-screen grid place-content-center">
+        <img src="https://picsum.photos/seed/m-p-butter/500/500.jpg" alt="" class="transition-all duration-300 w-96 h-96 align-bottom object-cover rounded-2xl shadow-2xl">
+      </figure>
+      <figure class="sticky top-0 h-screen grid place-content-center">
+        <img src="https://picsum.photos/seed/m-p-vanilla/500/500.jpg" alt="" class="transition-all duration-300 w-96 h-96 align-bottom object-cover rounded-2xl shadow-2xl">
+      </figure>
+      <figure class="sticky top-0 h-screen grid place-content-center">
+        <img src="https://picsum.photos/seed/m-p-choc/500/500.jpg" alt="" class="transition-all duration-300 w-96 h-96 align-bottom object-cover rounded-2xl shadow-2xl">
+      </figure>
+      <figure class="sticky top-0 h-screen grid place-content-center">
+        <img src="https://picsum.photos/seed/m-p-black/500/500.jpg" alt="" class="transition-all duration-300 w-96 h-96 align-bottom object-cover rounded-2xl shadow-2xl">
+      </figure>
+    </div>
+    <div class="sticky top-0 h-screen grid place-content-center">
+      <h1 class="text-4xl px-8 font-display font-medium text-right tracking-tight leading-[120%]">
+        Baked fresh daily.<br /> Order online and make your day creative 😎
+      </h1>
     </div>
   </div>
 </section>
 
 
 <!-- CAKE CUSTOMIZER FORM -->
-<section id="customizerSection" class="py-24 bg-cream-50 relative overflow-hidden border-t border-brand-100">
+<section id="customizerSection" class="py-24 bg-cream-50 relative  border-t border-brand-100">
   <div class="max-w-4xl mx-auto px-6">
     <div class="text-center mb-16">
       <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-500 mb-4">Interactive Builder</span>
@@ -706,7 +701,7 @@ tailwind.config = {
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="py-24 md:py-32 relative overflow-hidden">
+<section id="testimonials" class="py-24 md:py-32 relative ">
   <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-500/5 rounded-full blur-[120px]"></div>
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16 testimonials-header">
@@ -847,7 +842,7 @@ tailwind.config = {
         </div>
 
         <!-- Google map integration -->
-        <div class="rounded-3xl overflow-hidden border border-brand-100 shadow-xl h-64 relative bg-brand-50">
+        <div class="rounded-3xl  border border-brand-100 shadow-xl h-64 relative bg-brand-50">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.3117565451206!2d82.68452397631317!3d25.759404277353913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3990373df96c6a61%3A0xc48c4cf37c48f2fa!2sHot%20Million%20Bakery!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
             class="w-full h-full border-none" 
@@ -901,7 +896,7 @@ tailwind.config = {
 </section>
 
 <!-- CALL TO ACTION -->
-<section class="py-20 bg-brand-900 text-white relative overflow-hidden grain">
+<section class="py-20 bg-brand-900 text-white relative  grain">
   <div class="absolute inset-0 bg-gradient-to-tr from-brand-950/80 via-transparent to-brand-800/80"></div>
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-8">
     <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-gold-400">Order & Celebrations</span>
@@ -925,7 +920,7 @@ tailwind.config = {
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-brand-900 text-white relative overflow-hidden border-t border-brand-800">
+<footer class="bg-brand-900 text-white relative  border-t border-brand-800">
   <div class="max-w-7xl mx-auto px-6 pt-20 pb-8">
     <div class="grid md:grid-cols-4 gap-12 mb-16">
       <div class="md:col-span-2">
